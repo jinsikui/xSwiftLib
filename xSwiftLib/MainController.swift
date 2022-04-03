@@ -7,6 +7,7 @@ import SnapKit
 import RxSwift
 import SwiftyJSON
 import xAPI
+import xTracking
 
 class MainController: UIViewController {
 
@@ -30,6 +31,7 @@ class MainController: UIViewController {
         let btn = xViewFactory.button(withTitle: text, font: xFont.regularPF(withSize: 12), titleColor: xColor.black, bgColor: xColor.clear, borderColor: xColor.black, borderWidth: 0.5)
         btn.addTarget(self, action: action, for: .touchUpInside)
         btn.frame = CGRect.init(x: 0.5 * (xDevice.screenWidth() - 200), y: self.curY, width: 200, height: 40)
+        btn.tk_exposeContext = TKExposeContext.init(trackingId: "btn-1", userData: nil)
         scroll.addSubview(btn)
         self.curY += 50
     }

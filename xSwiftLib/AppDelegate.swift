@@ -1,6 +1,7 @@
 
 
 import UIKit
+import xTracking
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -11,6 +12,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController.init(rootViewController: MainController.init())
         window?.makeKeyAndVisible()
+        
+        TKExposeTracking.shared().registExposeEventLifeIndicator(self) { view, expose, isInBackground in
+            print("expose: \(expose.trackingId ?? "null")")
+        }
+        TKExposeTracking.shared().exposeValidSizePercentage = 0.1
+        TKExposeTracking.shared().start()
         return true
     }
 
