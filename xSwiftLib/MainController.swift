@@ -8,6 +8,10 @@ import RxSwift
 import SwiftyJSON
 import xAPI
 import xTracking
+import ReactiveSwift
+import ReactiveCocoa
+import QMUIKit
+
 
 class MainController: UIViewController {
 
@@ -25,6 +29,9 @@ class MainController: UIViewController {
             make.edges.equalTo(0)
         }
         self.addButton(text: "Promise to Observable", action: #selector(actionPromiseToObservable))
+        self.addButton(text: "RAC Property", action: #selector(actionRACProperty))
+        self.addButton(text: "hot signal", action: #selector(actionHotSignal))
+        self.addButton(text: "RAC KVO", action: #selector(actionRACKvo))
     }
 
     func addButton(text: String, action: Selector) {
@@ -35,7 +42,85 @@ class MainController: UIViewController {
         scroll.addSubview(btn)
         self.curY += 50
     }
-
+    
+    // 每秒发送一个text的子串
+    func textSignalGenerator(text: String) -> Signal<String, Never> {
+        return Signal<String, Never> { (observer, _) in
+            let now = DispatchTime.now()
+            for index in 0..<text.count {
+                DispatchQueue.main.asyncAfter(deadline: now + 1.0 * Double(index)) {
+                    let indexStartOfText = text.index(text.startIndex, offsetBy: 0)
+                    let indexEndOfText = text.index(text.startIndex, offsetBy: index)
+                    let substring = text[indexStartOfText...indexEndOfText]
+                    let value = String(substring)
+                    observer.send(value: value)
+                }
+            }
+        }
+    }
+    
+    // the property to kvo must marked as @objc dynamic, and must not swift-only type like enum
+    @objc dynamic var name:String = "batman"
+    @objc func actionRACKvo(){
+        /**
+         kvo received name: batman
+         kvo received name: spiderman
+         kvo received name: superman
+         */
+        // producer emit the initial value "batman", signal not.
+        self.reactive.producer(for: \.name).startWithValues { name in
+            print("kvo received name: \(name)")
+        }
+        xTask.asyncGlobal(after: 2) {
+            self.name = "spiderman"
+            xTask.asyncGlobal(after: 2) {
+                self.name = "superman"
+            }
+        }
+    }
+    
+    @objc func actionHotSignal(){
+        /**
+         observe 1 received: b
+         observe 1 received: ba
+         observe 1 received: bat
+         observe 1 received: batm
+         observe 1 received: batma
+         observe 2 received: batma
+         observe 1 received: batman
+         observe 2 received: batman
+         */
+        let signal = self.textSignalGenerator(text: "batman");
+        signal.observeValues { text in
+            print("observe 1 received: \(text)")
+        }
+        xTask.asyncMain(after: 3) {
+            signal.observeValues { text in
+                print("observe 2 received: \(text)")
+            }
+        }
+    }
+    
+    @objc func actionRACProperty(){
+        /**
+         producer received 3
+         producer received 4
+         producer received 5
+         signal received 5
+         */
+        let mutableProperty = MutableProperty(1)
+        mutableProperty.value = 2
+        mutableProperty.value = 3
+        mutableProperty.producer.startWithValues{
+            print("producer received \($0)")
+        }
+        mutableProperty.value = 4
+        mutableProperty.signal.observeValues {
+            print("signal received \($0)")
+        }
+        mutableProperty.value = 5
+    }
+    
     @objc func actionPromiseToObservable() {
         xTask.asyncGlobal {
             _ = xAPI.host("https://api.androidhive.info").path("/volley/person_object.json").method(.HTTP_GET).execute().asObservable().subscribe { (ret) in

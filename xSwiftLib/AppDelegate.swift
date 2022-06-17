@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         TKExposeTracking.shared().exposeValidSizePercentage = 0.1
         TKExposeTracking.shared().start()
+        
         return true
     }
-
 }
+

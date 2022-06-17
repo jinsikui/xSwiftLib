@@ -18,6 +18,10 @@ def common
   pod 'xAPI',    :git => "https://github.com/jinsikui/xAPI.git", :tag => 'v2.1.0-0'
   pod 'xTracking/Page',    :git => "https://github.com/jinsikui/xTracking.git", :tag => 'v2.2.0-0'
   pod 'xTracking/Expose',    :git => "https://github.com/jinsikui/xTracking.git", :tag => 'v2.2.0-0'
+  pod 'ReactiveCocoa'
+  pod 'ReactiveObjC'
+  pod 'ReactiveObjCBridge'
+  pod 'QMUIKit'
   
 end
 
