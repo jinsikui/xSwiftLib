@@ -11,13 +11,15 @@ import xTracking
 import ReactiveSwift
 import ReactiveCocoa
 import QMUIKit
+import Masonry
 
 
 class MainController: UIViewController {
 
     private var scroll: UIScrollView!
     private var curY: CGFloat = 30
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "xSwiftLib test"
@@ -32,6 +34,7 @@ class MainController: UIViewController {
         self.addButton(text: "RAC Property", action: #selector(actionRACProperty))
         self.addButton(text: "hot signal", action: #selector(actionHotSignal))
         self.addButton(text: "RAC KVO", action: #selector(actionRACKvo))
+        self.addButton(text: "Cha\u{20}rac\u{a0}ter", action: #selector(actionCharacter))
     }
 
     func addButton(text: String, action: Selector) {
@@ -41,6 +44,20 @@ class MainController: UIViewController {
         btn.tk_exposeContext = TKExposeContext.init(trackingId: "btn-1", userData: nil)
         scroll.addSubview(btn)
         self.curY += 50
+    }
+    
+    let specialCharacters:[Character] = ["\u{200b}","\u{2018}","\u{2019}","\u{20}","\u{21}","\u{25}","\u{26}","\u{2026}","\u{27}","\u{28}","\u{29}","\u{2c}","\u{2d}","\u{2e}","\u{2f}","\u{3d}","\u{3f}","\u{5f}","\u{2160}","\u{2161}","\u{a0}","\u{20ac}","\u{b0}"]
+    
+    @objc func actionCharacter(){
+        let str:String = "Cha\u{20}rac\u{a0}\u{25}ter"
+        print(str)
+        var newStr:String = ""
+        for c in str {
+            if !specialCharacters.contains(c) {
+                newStr.append(c)
+            }
+        }
+        print(newStr)
     }
     
     // 每秒发送一个text的子串
