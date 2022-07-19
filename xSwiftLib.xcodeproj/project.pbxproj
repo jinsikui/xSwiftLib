@@ -25,6 +25,8 @@
 		63BFB47027F9D38F00372284 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB46F27F9D38E00372284 /* MainController.swift */; };
 		63BFB47127F9D38F00372284 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB46F27F9D38E00372284 /* MainController.swift */; };
 		63BFB47227F9D38F00372284 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB46F27F9D38E00372284 /* MainController.swift */; };
+		63C57B49287FC72400BA065A /* WCWFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C57B48287FC72400BA065A /* WCWFont.swift */; };
+		63C57B4C287FF24400BA065A /* UIFont+Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C57B4B287FF24400BA065A /* UIFont+Theme.m */; };
 		C383ED3936BAC0A7A57CB31D /* Pods_xSwiftLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AD30FDE38D5FFEDF8988C13 /* Pods_xSwiftLib.framework */; };
 		D2DAD93D642B2380F22A0C5E /* Pods_xSwiftLibTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954C08B51640713A50776468 /* Pods_xSwiftLibTests.framework */; };
 /* End PBXBuildFile section */
@@ -69,6 +71,9 @@
 		63BFB46027F9D34E00372284 /* SWError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWError.swift; sourceTree = "<group>"; };
 		63BFB46E27F9D38E00372284 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		63BFB46F27F9D38E00372284 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		63C57B48287FC72400BA065A /* WCWFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCWFont.swift; sourceTree = "<group>"; };
+		63C57B4A287FF24400BA065A /* UIFont+Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Theme.h"; sourceTree = "<group>"; };
+		63C57B4B287FF24400BA065A /* UIFont+Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Theme.m"; sourceTree = "<group>"; };
 		6AD30FDE38D5FFEDF8988C13 /* Pods_xSwiftLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSwiftLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76408F6854AFD12FD7DD4B9B /* Pods-xSwiftLib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xSwiftLib.release.xcconfig"; path = "Target Support Files/Pods-xSwiftLib/Pods-xSwiftLib.release.xcconfig"; sourceTree = "<group>"; };
 		954C08B51640713A50776468 /* Pods_xSwiftLibTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xSwiftLibTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +164,9 @@
 		63BFB42627F9C91F00372284 /* xSwiftLib */ = {
 			isa = PBXGroup;
 			children = (
+				63C57B4A287FF24400BA065A /* UIFont+Theme.h */,
+				63C57B4B287FF24400BA065A /* UIFont+Theme.m */,
+				63C57B48287FC72400BA065A /* WCWFont.swift */,
 				63BFB42727F9C91F00372284 /* AppDelegate.swift */,
 				63BFB46F27F9D38E00372284 /* MainController.swift */,
 				63BFB46E27F9D38E00372284 /* Bridging-Header.h */,
@@ -500,10 +508,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63C57B49287FC72400BA065A /* WCWFont.swift in Sources */,
 				63BFB46B27F9D34E00372284 /* SWError.swift in Sources */,
 				63BFB46527F9D34E00372284 /* PromiseAsObservable.swift in Sources */,
 				63BFB42827F9C91F00372284 /* AppDelegate.swift in Sources */,
 				63BFB46827F9D34E00372284 /* FBLPromiseAsPromise.swift in Sources */,
+				63C57B4C287FF24400BA065A /* UIFont+Theme.m in Sources */,
 				63BFB47027F9D38F00372284 /* MainController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

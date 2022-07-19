@@ -22,6 +22,7 @@ def common
   pod 'ReactiveObjC'
   pod 'ReactiveObjCBridge'
   pod 'QMUIKit'
+  pod 'JXCategoryView'
   
 end
 

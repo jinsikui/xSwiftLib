@@ -17,6 +17,7 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
+  - JXCategoryView (1.6.0)
   - KVOController (1.2.0)
   - Masonry (1.1.0)
   - MJRefresh (3.5.0)
@@ -439,6 +440,7 @@ PODS:
   - YYText (1.0.7)
 
 DEPENDENCIES:
+  - JXCategoryView
   - PromisesObjC
   - PromisesSwift
   - QMUIKit
@@ -459,6 +461,7 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - FMDB
+    - JXCategoryView
     - KVOController
     - Masonry
     - MJRefresh
@@ -513,6 +516,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  JXCategoryView: 99c87854c67659f7e2ef1b43079656a46b36b398
   KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
@@ -535,6 +539,6 @@ SPEC CHECKSUMS:
   xUtil: 422ef230dc046aff1b8dc860569761dfc5ece880
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: b079e0ae800acc58f866518cb360c65c10e99519
+PODFILE CHECKSUM: 8b58578f1582ab44a0da0017d682eddfcb36022f
 
 COCOAPODS: 1.11.3

@@ -2,6 +2,7 @@
 
 import UIKit
 import xTracking
+import QMUIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
